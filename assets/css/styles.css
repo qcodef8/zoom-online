@@ -1,0 +1,78 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: linear-gradient(270deg, rgba(161, 196, 253, 0.6) 0%, rgba(194, 233, 251, 0.6) 28%);
+    padding: 40px;
+    color: #333;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2.5rem;
+    color: #7178ff;
+}
+
+.accordion {
+    background-color: #fff;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.accordion-button {
+    background-color: #7178ff;
+    color: white;
+    padding: 15px 20px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-button:hover {
+    background-color: #666dff;
+}
+
+/* Nội dung accordion */
+.accordion-content {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion.active .accordion-content {
+    padding: 15px 20px;
+    max-height: 500px;
+}
+
+.accordion-content ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.accordion-content li {
+    margin-bottom: 10px;
+}
+
+.accordion-content a {
+    text-decoration: none;
+    color: #17252a;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.accordion-content a:hover {
+    color: #7178ff;
+    border-bottom: 2px solid #7178ff;
+}

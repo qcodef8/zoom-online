@@ -1,0 +1,15 @@
+.content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.content img {
+    width: 100%;
+}
+
+.content p:not(.content h2 + p),
+.content ul,
+.content ol,
+.content blockquote {
+    margin: 60px 0;
+}

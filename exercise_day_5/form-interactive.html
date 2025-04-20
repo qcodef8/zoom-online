@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zoom Online Day 5</title>
+
+        <!-- ? Styles/CSS -->
+        <link rel="stylesheet" href="./assets/css/reset.css" />
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+    </head>
+    <body>
+        <div class="container">
+            <main class="main">
+                <form action="" class="register">
+                    <h1 class="form-heading">Register</h1>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Display Name</label>
+                        <input type="text" name="name" id="name" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" id="email" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" name="phone" id="phone" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" name="password" id="password" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password" class="form-label">Confirm Password</label>
+                        <input type="password" name="confirm-password" id="confirm-password" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Gender</label>
+                        <div class="form-radio-group">
+                            <input type="radio" name="gender" id="male" checked />
+                            <label for="male">Male</label>
+                            <input type="radio" name="gender" id="female" />
+                            <label for="female">Female</label>
+                            <input type="radio" name="gender" id="other" />
+                            <label for="other">Others</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="dob" class="form-label">Date Of Birth</label>
+                        <input type="date" name="dob" id="dob" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="form-label">Address</label>
+                        <input type="text" name="address" id="address" class="form-input" />
+                    </div>
+                    <div class="form-group">
+                        <label for="avatar" class="form-label">Avatar</label>
+                        <label for="avatar" class="form-label">
+                            <img
+                                src="./assets/imgs/avatar-placeholder.jpg"
+                                alt="Avatar Placeholder"
+                                width="100"
+                                class="avatar-img" />
+                        </label>
+                        <input type="file" name="avatar" id="avatar" hidden />
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Communication Preferences</label>
+                        <div class="form-radio-group">
+                            <input type="checkbox" name="communication-preferences" id="newsletter" />
+                            <label for="newsletter">Subscribe to Newsletter</label>
+                            <input type="checkbox" name="communication-preferences" id="promotional-email" />
+                            <label for="promotional-email">Receive Promotional Emails</label>
+                            <input type="checkbox" name="communication-preferences" id="product-update" />
+                            <label for="product-update">Get Product Updates </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn">Register</button>
+                    </div>
+                </form>
+            </main>
+        </div>
+    </body>
+</html>

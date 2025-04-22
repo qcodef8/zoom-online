@@ -1,0 +1,287 @@
+body,
+html {
+    font-size: 67.5%;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+
+    --white-color: #fff;
+    --text-color: #333;
+    --green-color: #479099;
+    --dark-green-color: #39737a;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* ? Exercise 1 */
+.background {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 30px 0;
+    background-color: #cbb3af;
+}
+
+.background::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1;
+    width: 70vw;
+    height: 70vh;
+    background-color: #e7d8d2;
+    clip-path: polygon(100% 0, 0 0, 100% 100%);
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    max-width: 733px;
+    height: 100vh;
+    background: var(--white-color);
+    box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    display: flex;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.aside {
+    width: 35%;
+    height: 100%;
+    color: var(--white-color);
+    background: var(--green-color);
+}
+
+.aside .block-wrapper {
+    padding: 12px;
+}
+
+.aside h2 {
+    padding: 6px 12px 8px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    background: var(--dark-green-color);
+}
+
+.aside .info {
+    padding: 20px 12px;
+}
+
+.aside .info .avatar {
+    width: 100%;
+    object-fit: cover;
+}
+
+.aside .info .name {
+    margin: 8px 0;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.aside .info .position {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.aside .contact .contact-block + .contact-block {
+    margin-top: 12px;
+}
+
+.contact-block .contact-heading {
+    margin-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.contact-block .contact-info a {
+    font-size: 1rem;
+    color: var(--white-color);
+    text-decoration: none;
+}
+
+.education p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.education p:first-child {
+    font-weight: 700;
+}
+
+.main {
+    width: 65%;
+    height: 100%;
+    padding: 18px 16px;
+    color: var(--text-color);
+    background: var(--white-color);
+}
+
+.main h2 {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--green-color);
+}
+
+.main h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 1px;
+    margin: 4px 0 12px;
+    background: #d5d6d6;
+}
+
+.main .summary {
+    margin-bottom: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.main .skills {
+    margin-bottom: 16px;
+}
+
+.skill-block {
+    display: flex;
+    gap: 30px;
+    font-size: 1rem;
+}
+
+.skill-block .skill-heading {
+    font-weight: 700;
+}
+
+.skill-block .skill-list {
+    list-style: inside;
+    line-height: 1.4;
+}
+
+.project {
+    font-size: 1rem;
+}
+
+.project-block + .project-block {
+    margin-top: 8px;
+}
+
+.project-heading {
+    margin-bottom: 4px;
+    font-weight: 700;
+}
+
+.project-list {
+    list-style: inside;
+}
+
+.project-list a {
+    color: var(--text-color);
+    text-decoration: none;
+}
+
+/* ? Exercise 2 */
+.pricing {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    padding: 2rem;
+}
+
+.plan {
+    width: 250px;
+    padding: 1.5rem;
+    border-radius: 10px;
+    background: #f1f1f1;
+    cursor: pointer;
+    box-shadow: 0 0 0 transparent;
+    transition: box-shadow, transform 0.3s ease;
+}
+
+.plan:hover,
+.plan:nth-child(2):hover {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-10px);
+}
+
+.plan:nth-child(2) {
+    border: 2px solid #c7c59a;
+    background: #fff;
+    transform: scale(1.05);
+}
+
+.plan:nth-child(2):hover {
+    transform: translateY(-10px) scale(1.05);
+}
+
+.plan-heading {
+    margin-bottom: 8px;
+    font-size: 2.4rem;
+    font-weight: 700;
+}
+
+.plan-desc {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+    color: #5e5e5e;
+}
+
+.price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.price strong {
+    font-size: 2rem;
+}
+
+.price-desc {
+    font-size: 1rem;
+    color: #5e5e5e;
+    margin-bottom: 12px;
+}
+
+.price-btn {
+    width: 100%;
+    padding: 4px 30px;
+    border: 2px solid #4c9c62;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    background: #4c9c62;
+    color: #fff;
+    cursor: pointer;
+    transition: opacity ease-in-out 0.3s;
+}
+
+.price-btn:hover {
+    opacity: 0.8;
+}
+
+.price-btn.current {
+    border: 2px solid #e5e5e5;
+    background: #e5e5e5;
+    color: #000;
+}
+
+.plan li {
+    margin-bottom: 12px;
+    font-size: 1.2rem;
+}
+
+.plan li::before {
+    content: "✓ ";
+    color: green;
+}

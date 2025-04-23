@@ -9,6 +9,7 @@ html {
 
     --white-color: #fff;
     --text-color: #333;
+    --gray-text-color: #bebebe;
     --green-color: #479099;
     --dark-green-color: #39737a;
 }
@@ -16,8 +17,9 @@ html {
 .flex-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
     justify-content: center;
-    height: 100vh;
+    padding: 50px 0;
 }
 
 /* ? Exercise 1 */
@@ -218,7 +220,7 @@ html {
 
 .plan:nth-child(2) {
     border: 2px solid #c7c59a;
-    background: #fff;
+    background: var(--white-color);
     transform: scale(1.05);
 }
 
@@ -261,7 +263,7 @@ html {
     border-radius: 4px;
     margin-bottom: 30px;
     background: #4c9c62;
-    color: #fff;
+    color: var(--white-color);
     cursor: pointer;
     transition: opacity ease-in-out 0.3s;
 }
@@ -284,4 +286,202 @@ html {
 .plan li::before {
     content: "✓ ";
     color: green;
+}
+
+/* ? Exercise 3 */
+.product-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 1000px;
+}
+
+.card {
+    width: 300px;
+    padding: 16px;
+    border-radius: 10px;
+    background: var(--white-color);
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card:hover img {
+    transform: scale(1.02);
+    overflow: hidden;
+}
+
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.price {
+    color: #28a745;
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #bdbdbd;
+    margin-right: 4px;
+}
+
+.discount-price {
+    color: #28a745;
+    font-weight: bold;
+}
+
+.buy-button {
+    width: 100%;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    color: var(--white-color);
+    background-color: #007bff;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.buy-button:hover {
+    background-color: #0056b3;
+}
+
+/* ? Exercise 4 */
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.left,
+.right {
+    height: 100%;
+}
+
+.left {
+    flex: 1;
+    background: url(../imgs/register-img.jpg) no-repeat center bottom / cover;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    flex: 1;
+    background: #f6f7fb;
+}
+
+.form-heading {
+    margin-bottom: 8px;
+    font-size: 2.8rem;
+    font-weight: 700;
+}
+
+.form-desc {
+    max-width: 400px;
+    font-size: 1.8rem;
+    text-align: center;
+    color: var(--gray-text-color);
+}
+
+.login-form {
+    margin-top: 30px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group + .form-group {
+    margin-top: 12px;
+}
+
+.form-label {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.form-input {
+    width: 250px;
+    padding: 12px 8px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.6rem;
+    outline: none;
+    background: var(--white-color);
+}
+
+.form-input::placeholder {
+    font-size: 1.4rem;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 12px 0 20px;
+}
+
+.checkbox-group label,
+.checkbox-group a {
+    font-size: 1rem;
+}
+
+.checkbox-group .form-group {
+    align-items: center;
+    flex-direction: row;
+    gap: 2px;
+}
+
+.checkbox-group .form-group input {
+    margin: 0;
+}
+
+.checkbox-group a,
+.register-link {
+    color: var(--green-color);
+}
+
+.btn {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    color: var(--white-color);
+    background: var(--green-color);
+    cursor: pointer;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: var(--dark-green-color);
+}
+
+.register-text {
+    margin-top: 12px;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* ? Exercise 5 */
+.froggy-text {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
 }

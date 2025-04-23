@@ -478,3 +478,10 @@ html {
     font-size: 1.2rem;
     text-align: center;
 }
+
+/* ? Exercise 5 */
+.froggy-text {
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+}

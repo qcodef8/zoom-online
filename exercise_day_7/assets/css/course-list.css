@@ -1,0 +1,289 @@
+/* ? Sidebar */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 270px;
+}
+
+.sidebar-form {
+    display: flex;
+    align-items: center;
+    height: 43px;
+    border: 1px solid #00000017;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.sidebar-form input {
+    flex: 1;
+    padding-left: 20px;
+    border: none;
+    outline: none;
+}
+
+.sidebar-form button {
+    padding: 0 20px;
+    align-self: stretch;
+    color: #00000080;
+    transition: color 0.2s ease-in-out;
+}
+
+.sidebar-form input:not(:placeholder-shown) ~ button {
+    color: var(--gray-color);
+}
+
+.sidebar-section .heading {
+    font-size: 1.6rem;
+}
+
+.sidebar-section .menu-list {
+    border: 1px solid #00000017;
+    margin-top: 20px;
+}
+
+.sidebar-section .menu-list .menu-item + .menu-item {
+    border-top: 1px solid #00000017;
+}
+
+.sidebar-section .menu-list a {
+    display: flex;
+    align-items: center;
+    height: 40px;
+    padding: 0 25px;
+    color: #000000b3;
+    text-decoration: none;
+    transition: color, transform 0.3s ease-in-out;
+}
+
+.sidebar-section .menu-list a:hover {
+    color: var(--secondary-color);
+    transform: translateX(16px);
+}
+
+/* ? Main */
+.main {
+    flex: 1;
+}
+
+.topics {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+}
+
+.topics li.active a,
+.topics a:hover {
+    color: var(--white-color);
+    background: var(--secondary-color);
+}
+
+.topics a {
+    display: inline-block;
+    height: 30px;
+    padding: 0 14px;
+    border-radius: 999px;
+    color: #000000cc;
+    line-height: 30px;
+    text-decoration: none;
+    transition: color, background 0.2s ease-in-out;
+}
+
+.course-list {
+    --column: 3;
+    --spacing: 30px;
+
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: var(--spacing);
+    margin-top: 60px;
+    margin-left: calc(-1 * var(--spacing));
+}
+
+.course-item {
+    display: flex;
+    flex-direction: column;
+    width: calc((100% / var(--column)) - var(--spacing));
+    border: 1px solid #eeeeee;
+    margin-left: var(--spacing);
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.course-item .thumb-wrapper {
+    position: relative;
+    display: block;
+    aspect-ratio: 5 / 4;
+    background-image: linear-gradient(90deg, rgb(40, 172, 225) 12%, rgb(81, 204, 231) 50%, rgb(122, 235, 236) 91%);
+    overflow: hidden;
+}
+
+.course-item.trending .thumb-wrapper::before {
+    content: "\e0b7";
+    position: absolute;
+    top: -60px;
+    right: -85px;
+    z-index: 99;
+    width: 100px;
+    height: 40px;
+    padding: 70px 0 0 85px;
+    font-family: "Font Awesome 6 Free";
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    background: var(--primary-color);
+    transform: rotate(35deg);
+}
+
+.course-item .thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+}
+
+.course-item:hover .thumb {
+    opacity: 0.8;
+    transform: scale3D(1.1, 1.1, 1);
+}
+
+.course-item .info {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    padding: 15px 20px;
+}
+
+.course-item .title a {
+    font-size: 1.8rem;
+    color: #464646;
+    text-decoration: none;
+    line-height: 1.4;
+    transition: color 0.3s ease-in-out;
+}
+
+.course-item:hover .title a {
+    color: var(--primary-color);
+}
+
+.course-item .desc {
+    margin: 20px 0;
+    color: #000;
+    line-height: 1.4;
+}
+
+.course-item .bottom {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: auto;
+    color: #00000099;
+}
+
+.course-item .bottom div {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.course-item .bottom img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.course-btn {
+    min-width: 66px;
+    height: 32px;
+    padding: 0 12px;
+    border-radius: 999px;
+    color: var(--white-color);
+    line-height: 32px;
+    text-align: center;
+    text-decoration: none;
+}
+
+.course-btn.free {
+    background: var(--secondary-color);
+}
+
+.course-btn.fee {
+    font-weight: 700;
+    background: var(--primary-color);
+}
+
+.float-shadow {
+    transition: transform 0.3s ease-in-out;
+}
+
+.float-shadow:hover {
+    transform: translateY(-5px);
+}
+
+.float-shadow::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    z-index: -1;
+    width: 90%;
+    height: 10px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+    background: -webkit-radial-gradient(center, ellipse, rgba(0, 0, 0, 0.35) 0%, rgba(0, 0, 0, 0) 80%);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity, transform 0.3s ease-in-out;
+}
+
+.float-shadow:hover::before {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 75px;
+    margin-bottom: 110px;
+}
+
+.pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    min-width: 30px;
+    padding: 6px 10px;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.3);
+    text-align: center;
+    text-decoration: none;
+    transition: border-color, color 0.2s linear;
+}
+
+.pagination li.active a:not(a.pagination-text),
+.pagination li:hover a:not(a.pagination-text) {
+    border-color: var(--secondary-color);
+    color: var(--secondary-color);
+}
+
+.pagination .pagination-text {
+    min-width: 58px;
+    font-size: 1.4rem;
+    font-weight: 500;
+    color: var(--white-color);
+    background: var(--secondary-color);
+}
+
+.pagination .previous {
+    width: 90px;
+}
+
+.pagination .next {
+    width: 58px;
+}

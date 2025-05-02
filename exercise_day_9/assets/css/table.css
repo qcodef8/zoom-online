@@ -1,0 +1,51 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 100px 0;
+    font-size: 1.8rem;
+    line-height: 1.4;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.ownership-table,
+.ownership-table th,
+.ownership-table td,
+.ownership-table__caption {
+    border: 2px solid #000;
+    border-collapse: collapse;
+}
+
+.ownership-table * {
+    padding: 10px;
+}
+
+.ownership-table__header-cell {
+    max-width: 80px;
+    font-weight: 700;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.total,
+.ownership-table__cell--category,
+strong {
+    font-weight: 700;
+}
+
+.ownership-table__cell--subcategory {
+    width: 155px;
+    border: none;
+}

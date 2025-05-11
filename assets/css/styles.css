@@ -11,11 +11,20 @@ body {
     color: #333;
 }
 
-h1 {
+.heading,
+.section-title {
     text-align: center;
-    margin-bottom: 30px;
-    font-size: 2.5rem;
     color: #7178ff;
+}
+
+.heading {
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+}
+
+.section-title {
+    margin-bottom: 30px;
+    font-size: 2rem;
 }
 
 .accordion {

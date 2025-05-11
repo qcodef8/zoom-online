@@ -1,0 +1,29 @@
+$grid-columns: 12;
+$grid-gutter-width: 30px !default;
+
+$grid-breakpoints: (
+    xxl: null,
+    xl: 1399.98px,
+    lg: 1199.98px,
+    md: 991.98px,
+    sm: 767.98px,
+    xs: 575.98px,
+);
+
+$container-max-widths: (
+    xxl: 1320px,
+    xl: 1140px,
+    lg: 960px,
+    md: 720px,
+    sm: 540px,
+    xs: 100%,
+);
+
+$gutters: (
+    0: 0,
+    1: 0.25,
+    2: 0.5,
+    3: 1,
+    4: 1.5,
+    5: 3,
+);

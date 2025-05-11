@@ -1,0 +1,55 @@
+@use "sass:math";
+
+@use "./grid-variables" as var;
+
+@mixin make-media-query($dimension) {
+    @if ($dimension == null) {
+        @content;
+    } @else {
+        @media screen and (max-width: $dimension) {
+            @content;
+        }
+    }
+}
+
+@mixin make-row-columns($infix) {
+    @for $i from 1 through var.$grid-columns * 0.5 {
+        .row-cols#{$infix}-#{$i} > * {
+            flex: 0 0 auto;
+            width: math.div(100%, $i);
+        }
+    }
+}
+
+@mixin make-columns($infix) {
+    @for $i from 1 through var.$grid-columns {
+        .col#{$infix}-#{$i} {
+            flex: 0 0 auto;
+            width: math.div(100%, var.$grid-columns) * $i;
+        }
+    }
+}
+
+@mixin make-offsets($infix) {
+    @for $i from 0 to var.$grid-columns {
+        .offset#{$infix}-#{$i} {
+            margin-left: if($i > 0, math.div(100%, var.$grid-columns) * $i, 0);
+        }
+    }
+}
+
+@mixin make-gutters($infix) {
+    @each $i, $ratio in var.$gutters {
+        $gutter: if($i > 0, #{var.$grid-gutter-width * $ratio}, 0);
+
+        .g#{$infix}-#{$i},
+        .gx#{$infix}-#{$i} {
+            --grid-gutter-x: #{$gutter};
+        }
+
+        .g#{$infix}-#{$i},
+        .gy#{$infix}-#{$i} {
+            --grid-gutter-y: #{$gutter};
+        }
+    }
+}

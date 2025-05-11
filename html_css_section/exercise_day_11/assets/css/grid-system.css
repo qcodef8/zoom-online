@@ -1,0 +1,31 @@
+* {
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.container {
+    flex: 1 0;
+}
+
+.item {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    padding: 20px;
+    font-size: 30px;
+    font-weight: 600;
+    color: #fff;
+    background: #9bce0b;
+}

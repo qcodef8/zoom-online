@@ -1,0 +1,6 @@
+{
+    "scripts": {
+        "start": "sass assets/scss/main.scss:assets/css/styles.css -w",
+        "minify": "sass assets/scss/main.scss:assets/css/styles.css -s compressed"
+    }
+}

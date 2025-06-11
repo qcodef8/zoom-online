@@ -93,18 +93,13 @@ const TodoApp = {
 
     // ? Get current values from the form
     getFormValues() {
-        return {
-            id: Date.now(),
-            title: $("#taskTitle").value.trim(),
-            description: $("#taskDescription").value.trim(),
-            category: $("#taskCategory").value,
-            priority: $("#taskPriority").value,
-            startTime: $("#startTime").value,
-            endTime: $("#endTime").value,
-            dueDate: $("#taskDate").value,
-            cardColor: $("#taskColor").value,
-            isCompleted: false,
-        };
+        const formData = new FormData(this.form);
+        const task = Object.fromEntries(formData.entries());
+
+        task.id = Date.now();
+        task.isCompleted = false;
+
+        return task;
     },
 
     // ? Handle form on submission
@@ -135,15 +130,10 @@ const TodoApp = {
     openEditModal(task) {
         this.addTaskModal.classList.add("show");
 
-        $("#taskTitle").value = task.title;
-        $("#taskDescription").value = task.description;
-        $("#taskCategory").value = task.category;
-        $("#taskPriority").value = task.priority;
-        $("#startTime").value = task.startTime;
-        $("#endTime").value = task.endTime;
-        $("#taskDate").value = task.dueDate;
-        $("#taskColor").value = task.cardColor;
-        $("#taskId").value = task.id;
+        Object.entries(task).forEach(([key, value]) => {
+            const field = this.form.querySelector(`[name="${key}"]`);
+            if (field) field.value = value;
+        });
 
         this.submitBtn.textContent = "Update Task";
         this.submitBtn.dataset.mode = "edit";
@@ -206,10 +196,9 @@ const TodoApp = {
     // ? Render single task into DOM
     renderTask(task) {
         const completeText = task.isCompleted
-            ? "Mark as Reopen"
+            ? "Mark as Active"
             : "Mark as Complete";
         const completeIcon = task.isCompleted ? "fa-rotate-left" : "fa-check";
-        const allowDelete = task.isCompleted;
 
         const timeDisplay =
             task.startTime && task.endTime
@@ -219,9 +208,12 @@ const TodoApp = {
                 : "";
 
         const html = `
-            <div data-id="${task.id}" class="task-card ${task.cardColor} ${
-            task.isCompleted ? "completed" : ""
-        }">
+            <div data-id="${task.id}"
+                id="taskCard" 
+                class="task-card 
+                ${task.cardColor} 
+                ${task.isCompleted ? "completed" : ""}"
+            >
                 <div class="task-header">
                     <h3 class="task-title">${task.title}</h3>
                     <button class="task-menu">
@@ -231,11 +223,9 @@ const TodoApp = {
                                 <i class="fa-solid fa-pen-to-square fa-icon"></i> Edit
                             </div>
                             <div class="dropdown-item complete" id="completeTask">
-                                <i class="fa-solid ${completeIcon} fa-icon"></i> ${completeText}
+                                <i class="fa-solid fa-icon ${completeIcon}"></i> ${completeText}
                             </div>
-                            <div class="dropdown-item delete" id="deleteTask" ${
-                                !allowDelete ? "style='display: none'" : ""
-                            }>
+                            <div class="dropdown-item delete" id="deleteTask">
                                 <i class="fa-solid fa-trash fa-icon"></i> Delete
                             </div>
                         </div>
@@ -248,7 +238,7 @@ const TodoApp = {
         this.taskGrid.insertAdjacentHTML("afterbegin", html);
 
         const card = this.taskGrid.querySelector(
-            `.task-card[data-id='${task.id}']`
+            `#taskCard[data-id='${task.id}']`
         );
         this.setupTaskActions(card, task.id);
     },

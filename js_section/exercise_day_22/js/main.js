@@ -17,6 +17,7 @@ const TodoApp = {
     // ? Cache commonly used DOM elements
     cacheElements() {
         this.addTaskModal = $("#addTaskModal");
+        this.confirmDeleteModal = $("#confirmDeleteModal");
         this.modalTitle = $("#modalTitle");
         this.form = $(".todo-app-form");
         this.submitBtn = $(".btn-submit");
@@ -212,7 +213,6 @@ const TodoApp = {
 
         const html = `
             <div data-id="${task.id}"
-                id="taskCard" 
                 class="task-card 
                 ${task.cardColor} 
                 ${task.isCompleted ? "completed" : ""}"
@@ -241,9 +241,9 @@ const TodoApp = {
         this.taskGrid.insertAdjacentHTML("afterbegin", html);
 
         const card = this.taskGrid.querySelector(
-            `#taskCard[data-id='${task.id}']`
+            `.task-card[data-id='${task.id}']`
         );
-        this.setupTaskActions(card, task.id);
+        this.setupTaskActions(card);
     },
 
     // ? Format start/end time for display
@@ -256,8 +256,10 @@ const TodoApp = {
     },
 
     // ? Set up Edit / Complete / Delete actions for task
-    setupTaskActions(cardElement, taskId) {
-        const task = this.todoTasks.find((t) => t.id === taskId);
+    setupTaskActions(cardElement) {
+        const task = this.todoTasks.find(
+            (t) => t.id === Number(cardElement.dataset.id)
+        );
         if (!task) return;
 
         const editBtn = cardElement.querySelector(".edit-btn");
@@ -275,11 +277,24 @@ const TodoApp = {
         });
 
         deleteBtn.addEventListener("click", () => {
-            if (task.isCompleted) {
-                this.todoTasks = this.todoTasks.filter((t) => t.id !== taskId);
+            this.confirmDeleteModal.classList.add("show");
+            const cancelBtn =
+                this.confirmDeleteModal.querySelector(".modal-cancel");
+            const confirmBtn =
+                this.confirmDeleteModal.querySelector(".confirm-delete");
+
+            cancelBtn.addEventListener("click", () =>
+                this.confirmDeleteModal.classList.remove("show")
+            );
+
+            confirmBtn.addEventListener("click", () => {
+                this.todoTasks = this.todoTasks.filter(
+                    (t) => t.id !== Number(cardElement.dataset.id)
+                );
                 this.saveToStorage();
                 this.reloadTasks();
-            }
+                this.confirmDeleteModal.classList.remove("show");
+            });
         });
     },
 };

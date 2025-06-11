@@ -69,6 +69,30 @@
             <div class="task-grid"></div>
         </main>
 
+        <!-- Confirm Delete Modal -->
+        <div class="modal-overlay" id="confirmDeleteModal">
+            <div class="modal">
+                <div class="modal-header">
+                    <h2>Delete Task</h2>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete?</p>
+                </div>
+                <div class="modal-footer">
+                    <button
+                        type="button"
+                        class="btn btn-secondary modal-cancel">
+                        Cancel
+                    </button>
+                    <button
+                        type="button"
+                        class="btn btn-primary btn-delete confirm-delete">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- Add New Task Modal -->
         <div class="modal-overlay" id="addTaskModal">
             <div class="modal">

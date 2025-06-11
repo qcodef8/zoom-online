@@ -87,9 +87,10 @@
                             <input
                                 type="text"
                                 id="taskTitle"
+                                name="title"
                                 class="form-input"
                                 placeholder="Enter task title" />
-                            <input type="hidden" id="taskId" />
+                            <input type="hidden" id="taskId" name="id" />
                         </div>
 
                         <div class="form-group">
@@ -98,6 +99,7 @@
                             </label>
                             <textarea
                                 id="taskDescription"
+                                name="description"
                                 class="form-textarea"
                                 placeholder="Enter task description"></textarea>
                         </div>
@@ -106,7 +108,10 @@
                             <label class="form-label" for="taskCategory">
                                 Category
                             </label>
-                            <select id="taskCategory" class="form-select">
+                            <select
+                                id="taskCategory"
+                                name="category"
+                                class="form-select">
                                 <option value="">Select category</option>
                                 <option value="meeting">Meeting</option>
                                 <option value="design">Design</option>
@@ -121,7 +126,10 @@
                             <label class="form-label" for="taskPriority">
                                 Priority
                             </label>
-                            <select id="taskPriority" class="form-select">
+                            <select
+                                id="taskPriority"
+                                name="priority"
+                                class="form-select">
                                 <option value="low">Low</option>
                                 <option value="medium" selected>Medium</option>
                                 <option value="high">High</option>
@@ -139,6 +147,7 @@
                                     <input
                                         type="time"
                                         id="startTime"
+                                        name="startTime"
                                         class="form-input" />
                                 </div>
                                 <div>
@@ -148,6 +157,7 @@
                                     <input
                                         type="time"
                                         id="endTime"
+                                        name="endTime"
                                         class="form-input" />
                                 </div>
                             </div>
@@ -160,6 +170,7 @@
                             <input
                                 type="date"
                                 id="taskDate"
+                                name="dueDate"
                                 class="form-input" />
                         </div>
 
@@ -167,7 +178,10 @@
                             <label class="form-label" for="taskColor">
                                 Card Color
                             </label>
-                            <select id="taskColor" class="form-select">
+                            <select
+                                id="taskColor"
+                                name="cardColor"
+                                class="form-select">
                                 <option value="blue">Blue</option>
                                 <option value="purple">Purple</option>
                                 <option value="yellow">Yellow</option>

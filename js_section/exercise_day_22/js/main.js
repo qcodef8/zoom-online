@@ -240,7 +240,7 @@ const TodoApp = {
         this.taskGrid.insertAdjacentHTML("afterbegin", html);
 
         const card = this.taskGrid.querySelector(
-            `#taskCard[data-id='${task.id}']`
+            `.task-card[data-id='${task.id}']`
         );
         this.setupTaskActions(card);
     },

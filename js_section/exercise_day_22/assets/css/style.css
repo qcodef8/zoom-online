@@ -1532,6 +1532,7 @@ body {
     max-width: 500px;
     max-height: 90vh;
     overflow-y: auto;
+    scroll-behavior: smooth;
     transform: scale(0.9);
     transition: transform 0.3s ease;
 }
@@ -1541,7 +1542,7 @@ body {
 }
 
 .modal-header {
-    padding: 1.5rem 1.5rem 1rem;
+    padding: 1.5rem;
     border-bottom: 1px solid #e5e7eb;
     display: flex;
     align-items: center;
@@ -1676,6 +1677,15 @@ body {
 
 .btn-secondary:hover {
     background: #e5e7eb;
+}
+
+.btn-delete {
+    background: #ec2d01;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #cd2701;
 }
 
 /* Font Awesome Icons */

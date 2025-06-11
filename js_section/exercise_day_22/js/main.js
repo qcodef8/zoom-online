@@ -16,7 +16,7 @@ const TodoApp = {
 
     // ? Cache commonly used DOM elements
     cacheElements() {
-        this.addTaskModal = $("#addTaskModal");
+        this.taskModal = $("#taskModal");
         this.confirmDeleteModal = $("#confirmDeleteModal");
         this.modalTitle = $("#modalTitle");
         this.form = $(".todo-app-form");
@@ -30,27 +30,27 @@ const TodoApp = {
     bindEvents() {
         // ? Open modal on add button click
         $(".add-btn").addEventListener("click", () => {
-            this.addTaskModal.classList.add("show");
+            this.taskModal.classList.add("show");
         });
 
         // ? Close modal on close/cancel/overlay click
-        this.addTaskModal.addEventListener("click", (e) => {
+        this.taskModal.addEventListener("click", (e) => {
             const isClose = e.target.closest(".modal-close, .modal-cancel");
-            const isOutside = e.target === this.addTaskModal;
+            const isOutside = e.target === this.taskModal;
             if (isClose || isOutside) {
                 this.hideModal();
             }
         });
 
         // ? Auto-focus after open modal
-        this.addTaskModal
+        this.taskModal
             .querySelector(".modal")
             .addEventListener("transitionend", (e) => {
                 if (
                     e.propertyName === "transform" &&
-                    this.addTaskModal.classList.contains("show")
+                    this.taskModal.classList.contains("show")
                 ) {
-                    const input = this.addTaskModal.querySelector("input");
+                    const input = this.taskModal.querySelector("input");
                     input?.focus();
                 }
             });
@@ -86,7 +86,7 @@ const TodoApp = {
 
     // ? Close modal and reset form
     hideModal() {
-        this.addTaskModal.classList.remove("show");
+        this.taskModal.classList.remove("show");
         this.form.reset();
         this.modalTitle.textContent = "Add New Task";
         this.submitBtn.textContent = "Create Task";
@@ -131,7 +131,7 @@ const TodoApp = {
 
     // ? Populate form with task data for editing
     openEditModal(task) {
-        this.addTaskModal.classList.add("show");
+        this.taskModal.classList.add("show");
         this.modalTitle.textContent = "Edit Task";
 
         Object.entries(task).forEach(([key, value]) => {
@@ -183,18 +183,16 @@ const TodoApp = {
 
     // ? Get tasks based on current tab and keyword
     getFilteredTasks() {
-        return this.todoTasks
-            .filter((task) => {
-                const matchTab =
-                    this.currentTab === "all" ||
-                    (this.currentTab === "active" && !task.isCompleted) ||
-                    (this.currentTab === "completed" && task.isCompleted);
-                return (
-                    matchTab &&
-                    task.title.toLowerCase().includes(this.currentKeyword)
-                );
-            })
-            .sort((a, b) => b.id - a.id);
+        return this.todoTasks.filter((task) => {
+            const matchTab =
+                this.currentTab === "all" ||
+                (this.currentTab === "active" && !task.isCompleted) ||
+                (this.currentTab === "completed" && task.isCompleted);
+            return (
+                matchTab &&
+                task.title.toLowerCase().includes(this.currentKeyword)
+            );
+        });
     },
 
     // ? Render single task into DOM
@@ -238,7 +236,7 @@ const TodoApp = {
                 <div class="task-time">${timeDisplay}</div>
             </div>`;
 
-        this.taskGrid.insertAdjacentHTML("afterbegin", html);
+        this.taskGrid.insertAdjacentHTML("beforeend", html);
 
         const card = this.taskGrid.querySelector(
             `.task-card[data-id='${task.id}']`

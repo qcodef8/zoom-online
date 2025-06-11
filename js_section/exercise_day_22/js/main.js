@@ -212,7 +212,6 @@ const TodoApp = {
 
         const html = `
             <div data-id="${task.id}"
-                id="taskCard" 
                 class="task-card 
                 ${task.cardColor} 
                 ${task.isCompleted ? "completed" : ""}"
@@ -243,7 +242,7 @@ const TodoApp = {
         const card = this.taskGrid.querySelector(
             `#taskCard[data-id='${task.id}']`
         );
-        this.setupTaskActions(card, task.id);
+        this.setupTaskActions(card);
     },
 
     // ? Format start/end time for display
@@ -256,8 +255,10 @@ const TodoApp = {
     },
 
     // ? Set up Edit / Complete / Delete actions for task
-    setupTaskActions(cardElement, taskId) {
-        const task = this.todoTasks.find((t) => t.id === taskId);
+    setupTaskActions(cardElement) {
+        const task = this.todoTasks.find(
+            (t) => t.id === Number(cardElement.dataset.id)
+        );
         if (!task) return;
 
         const editBtn = cardElement.querySelector(".edit-btn");

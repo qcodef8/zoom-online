@@ -17,6 +17,7 @@ const TodoApp = {
     // ? Cache commonly used DOM elements
     cacheElements() {
         this.addTaskModal = $("#addTaskModal");
+        this.confirmDeleteModal = $("#confirmDeleteModal");
         this.modalTitle = $("#modalTitle");
         this.form = $(".todo-app-form");
         this.submitBtn = $(".btn-submit");
@@ -276,11 +277,24 @@ const TodoApp = {
         });
 
         deleteBtn.addEventListener("click", () => {
-            if (task.isCompleted) {
-                this.todoTasks = this.todoTasks.filter((t) => t.id !== taskId);
+            this.confirmDeleteModal.classList.add("show");
+            const cancelBtn =
+                this.confirmDeleteModal.querySelector(".modal-cancel");
+            const confirmBtn =
+                this.confirmDeleteModal.querySelector(".confirm-delete");
+
+            cancelBtn.addEventListener("click", () =>
+                this.confirmDeleteModal.classList.remove("show")
+            );
+
+            confirmBtn.addEventListener("click", () => {
+                this.todoTasks = this.todoTasks.filter(
+                    (t) => t.id !== Number(cardElement.dataset.id)
+                );
                 this.saveToStorage();
                 this.reloadTasks();
-            }
+                this.confirmDeleteModal.classList.remove("show");
+            });
         });
     },
 };

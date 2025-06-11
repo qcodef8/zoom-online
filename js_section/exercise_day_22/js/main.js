@@ -222,13 +222,13 @@ const TodoApp = {
                     <button class="task-menu">
                         <i class="fa-solid fa-ellipsis fa-icon"></i>
                         <div class="dropdown-menu">
-                            <div class="dropdown-item" id="editTask">
+                            <div class="dropdown-item edit-btn">
                                 <i class="fa-solid fa-pen-to-square fa-icon"></i> Edit
                             </div>
-                            <div class="dropdown-item complete" id="completeTask">
+                            <div class="dropdown-item complete complete-btn">
                                 <i class="fa-solid fa-icon ${completeIcon}"></i> ${completeText}
                             </div>
-                            <div class="dropdown-item delete" id="deleteTask">
+                            <div class="dropdown-item delete delete-btn">
                                 <i class="fa-solid fa-trash fa-icon"></i> Delete
                             </div>
                         </div>
@@ -260,30 +260,27 @@ const TodoApp = {
         const task = this.todoTasks.find((t) => t.id === taskId);
         if (!task) return;
 
-        cardElement.querySelector("#editTask").addEventListener("click", () => {
+        const editBtn = cardElement.querySelector(".edit-btn");
+        const completeBtn = cardElement.querySelector(".complete-btn");
+        const deleteBtn = cardElement.querySelector(".delete-btn");
+
+        editBtn.addEventListener("click", () => {
             this.openEditModal(task);
         });
 
-        cardElement
-            .querySelector("#completeTask")
-            .addEventListener("click", () => {
-                task.isCompleted = !task.isCompleted;
+        completeBtn.addEventListener("click", () => {
+            task.isCompleted = !task.isCompleted;
+            this.saveToStorage();
+            this.reloadTasks();
+        });
+
+        deleteBtn.addEventListener("click", () => {
+            if (task.isCompleted) {
+                this.todoTasks = this.todoTasks.filter((t) => t.id !== taskId);
                 this.saveToStorage();
                 this.reloadTasks();
-            });
-
-        const deleteBtn = cardElement.querySelector("#deleteTask");
-        if (deleteBtn) {
-            deleteBtn.addEventListener("click", () => {
-                if (task.isCompleted) {
-                    this.todoTasks = this.todoTasks.filter(
-                        (t) => t.id !== taskId
-                    );
-                    this.saveToStorage();
-                    this.reloadTasks();
-                }
-            });
-        }
+            }
+        });
     },
 };
 

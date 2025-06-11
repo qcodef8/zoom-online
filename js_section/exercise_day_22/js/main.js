@@ -17,6 +17,7 @@ const TodoApp = {
     // ? Cache commonly used DOM elements
     cacheElements() {
         this.addTaskModal = $("#addTaskModal");
+        this.modalTitle = $("#modalTitle");
         this.form = $(".todo-app-form");
         this.submitBtn = $(".btn-submit");
         this.taskGrid = $(".task-grid");
@@ -86,6 +87,7 @@ const TodoApp = {
     hideModal() {
         this.addTaskModal.classList.remove("show");
         this.form.reset();
+        this.modalTitle.textContent = "Add New Task";
         this.submitBtn.textContent = "Create Task";
         this.submitBtn.dataset.mode = "create";
         $("#taskId").value = "";
@@ -129,6 +131,7 @@ const TodoApp = {
     // ? Populate form with task data for editing
     openEditModal(task) {
         this.addTaskModal.classList.add("show");
+        this.modalTitle.textContent = "Edit Task";
 
         Object.entries(task).forEach(([key, value]) => {
             const field = this.form.querySelector(`[name="${key}"]`);

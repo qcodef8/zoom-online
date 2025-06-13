@@ -195,28 +195,62 @@ const TodoApp = {
         });
     },
 
-    // ? Render single task into DOM
+    getAllowedColor(color) {
+        const allowed = ["blue", "purple", "yellow", "pink", "green"];
+        return allowed.includes(color) ? color : "blue";
+    },
+
+    // ? Escape HTML special characters
+    escapeHTML(str) {
+        return String(str)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    },
+
+    // ? Validate time in "HH:mm" format
+    isValidTime(str) {
+        return /^\d{2}:\d{2}$/.test(str);
+    },
+
+    // ? Format start/end time for display
+    formatTime(timeStr) {
+        const [h, m] = timeStr.split(":");
+        const hour = parseInt(h, 10);
+        const suffix = hour >= 12 ? "PM" : "AM";
+        const formattedHour = hour % 12 === 0 ? 12 : hour % 12;
+        return `${formattedHour}:${m} ${suffix}`;
+    },
+
+    // ? Render single task into DOM (secured)
     renderTask(task) {
+        const safeId = Number.isInteger(task.id) ? task.id : Date.now();
+        const safeColor = this.getAllowedColor(task.cardColor);
+        const safeTitle = this.escapeHTML(task.title);
+        const safeDesc = this.escapeHTML(task.description);
+
+        const hasValidTime =
+            this.isValidTime(task.startTime) && this.isValidTime(task.endTime);
+        const timeDisplay = hasValidTime
+            ? `${this.formatTime(task.startTime)} - ${this.formatTime(
+                  task.endTime
+              )}`
+            : "";
+
         const completeText = task.isCompleted
             ? "Mark as Active"
             : "Mark as Complete";
         const completeIcon = task.isCompleted ? "fa-rotate-left" : "fa-check";
 
-        const timeDisplay =
-            task.startTime && task.endTime
-                ? this.formatTime(task.startTime) +
-                  " - " +
-                  this.formatTime(task.endTime)
-                : "";
-
         const html = `
-            <div data-id="${task.id}"
-                class="task-card 
-                ${task.cardColor} 
+            <div data-id="${safeId}"
+                class="task-card ${safeColor} 
                 ${task.isCompleted ? "completed" : ""}"
             >
                 <div class="task-header">
-                    <h3 class="task-title">${task.title}</h3>
+                    <h3 class="task-title">${safeTitle}</h3>
                     <button class="task-menu">
                         <i class="fa-solid fa-ellipsis fa-icon"></i>
                         <div class="dropdown-menu">
@@ -232,25 +266,16 @@ const TodoApp = {
                         </div>
                     </button>
                 </div>
-                <p class="task-description">${task.description}</p>
+                <p class="task-description">${safeDesc}</p>
                 <div class="task-time">${timeDisplay}</div>
             </div>`;
 
         this.taskGrid.insertAdjacentHTML("beforeend", html);
 
         const card = this.taskGrid.querySelector(
-            `.task-card[data-id='${task.id}']`
+            `.task-card[data-id='${safeId}']`
         );
         this.setupTaskActions(card);
-    },
-
-    // ? Format start/end time for display
-    formatTime(timeStr) {
-        const [h, m] = timeStr.split(":");
-        const hour = parseInt(h, 10);
-        const suffix = hour >= 12 ? "PM" : "AM";
-        const formattedHour = hour % 12 === 0 ? 12 : hour % 12;
-        return `${formattedHour}:${m} ${suffix}`;
     },
 
     // ? Set up Edit / Complete / Delete actions for task

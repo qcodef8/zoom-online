@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zoom Online Day 27</title>
+
+        <link rel="stylesheet" href="./assets/css/code-editor-advanced.css" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="editor-column">
+                <div class="editor-block">
+                    <div class="editor-label">HTML</div>
+                    <div
+                        id="htmlEditor"
+                        style="height: calc(100% - 28px)"></div>
+                </div>
+                <div class="editor-block">
+                    <div class="editor-label">CSS</div>
+                    <div id="cssEditor" style="height: calc(100% - 28px)"></div>
+                </div>
+                <div class="editor-block">
+                    <div class="editor-label">JavaScript</div>
+                    <div id="jsEditor" style="height: calc(100% - 28px)"></div>
+                </div>
+            </div>
+            <div id="preview">
+                <iframe id="iframePreview"></iframe>
+            </div>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.52.2/min/vs/loader.min.js"></script>
+        <script src="./js/code-editor-advanced.js"></script>
+    </body>
+</html>

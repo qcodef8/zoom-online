@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zoom Online Day 27</title>
+
+        <link rel="stylesheet" href="./assets/css/code-editor.css" />
+    </head>
+    <body>
+        <div class="editor-container">
+            <h3>Editor (HTML/CSS)</h3>
+            <textarea id="codeArea" spellcheck="false"></textarea>
+        </div>
+        <div class="preview-container">
+            <iframe id="previewFrame"></iframe>
+        </div>
+
+        <!-- Custom Context Menu -->
+        <div class="context-menu" id="contextMenu">
+            <div class="context-menu-item" id="clearCode">🧹 Xóa code</div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/prismjs/prism.js"></script>
+        <script src="./js/code-editor.js"></script>
+    </body>
+</html>

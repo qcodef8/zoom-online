@@ -1,0 +1,33 @@
+.tab-group {
+    margin-bottom: 40px;
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ccc;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 10px 20px;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-bottom: none;
+}
+
+.tab.active {
+    background-color: #009688;
+    color: white;
+    border: 1px solid #009688;
+    border-bottom: 2px solid white;
+}
+
+.tab-content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ccc;
+}
+
+.tab-content.active {
+    display: block;
+}

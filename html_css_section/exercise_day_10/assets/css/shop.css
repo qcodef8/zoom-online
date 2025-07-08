@@ -1,0 +1,242 @@
+/* ? Sidebar Section */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+}
+
+.sidebar-form {
+    position: relative;
+    display: flex;
+    align-items: center;
+    height: 45px;
+    color: #000000b3;
+    background: #eee;
+}
+
+.sidebar-form input {
+    width: 100%;
+    padding: 0 110px 0 8px;
+    border: none;
+    outline: none;
+    font-style: italic;
+    background: transparent;
+}
+
+.sidebar-form button {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100px;
+    height: 100%;
+    color: var(--white-color);
+    background: var(--primary-color);
+}
+
+.sidebar-section .heading {
+    font-size: 2.4rem;
+}
+
+.sidebar-section .menu-list {
+    margin-top: 30px;
+}
+
+.sidebar-section .menu-list a:not(.menu-list .heading a) {
+    display: inline-block;
+    height: 40px;
+    color: #242222b3;
+    text-decoration: none;
+    transition: color 0.3s linear;
+}
+
+.sidebar-section .menu-list a:hover {
+    color: var(--primary-color);
+}
+
+.sidebar-section .menu-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.sidebar-section .menu-item + .menu-item {
+    margin-top: 30px;
+}
+
+.sidebar-section .item-img {
+    width: 100px;
+    height: 75px;
+    object-fit: cover;
+}
+
+.sidebar-section .item-info {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+}
+
+.sidebar-section .item-info .heading a {
+    font-size: 1.8rem;
+    font-weight: 500;
+    color: #242222;
+    text-decoration: none;
+    transition: color 0.2s linear;
+}
+
+.sidebar-section .menu-item:hover .item-info .heading a {
+    color: var(--primary-color);
+}
+
+.sidebar-section .item-info .price {
+    font-family: var(--heading-font);
+    font-weight: 600;
+    color: #000000b3;
+}
+
+/* ? Main Section */
+.main {
+    flex: 1;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.filter-select {
+    width: 200px;
+    height: 45px;
+    padding: 0 15px;
+    border: 1px solid #ececec;
+    outline: none;
+    color: #000000b3;
+}
+
+.showing-text {
+    font-size: 1.7rem;
+    color: #000000b3;
+}
+
+.product-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #eeeeee;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.product-item .thumb-wrapper {
+    display: block;
+    aspect-ratio: 1 / 0.9;
+    overflow: hidden;
+}
+
+.product-item .thumb {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.5s ease-in-out;
+}
+
+.product-item:hover .thumb {
+    transform: scale3D(1.1, 1.1, 1.1);
+}
+
+.product-item .info {
+    padding: 32px 0;
+    text-align: center;
+}
+
+.product-item .title a {
+    font-size: 1.8rem;
+    text-decoration: none;
+}
+
+.product-item .price {
+    margin: 12px 0 20px;
+    font-family: var(--heading-font);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #000000cc;
+}
+
+.product-btn {
+    min-width: 130px;
+    height: 40px;
+    border-radius: 999px;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--white-color);
+    background: var(--primary-color);
+    line-height: 40px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.float-shadow {
+    transition: transform 0.3s ease-in-out;
+}
+
+.float-shadow:hover {
+    transform: translateY(-5px);
+}
+
+.float-shadow::before {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 5%;
+    z-index: -1;
+    width: 90%;
+    height: 10px;
+    background: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0) 80%
+    );
+    background: -webkit-radial-gradient(
+        center,
+        ellipse,
+        rgba(0, 0, 0, 0.35) 0%,
+        rgba(0, 0, 0, 0) 80%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity, transform 0.3s ease-in-out;
+}
+
+.float-shadow:hover::before {
+    opacity: 1;
+    transform: translateY(5px);
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 50px;
+}
+
+.pagination a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    font-weight: 700;
+    color: var(--white-color);
+    background: var(--primary-color);
+    text-decoration: none;
+    transition: background 0.3s ease-in-out;
+}
+
+.pagination li.active a,
+.pagination a:hover {
+    background: var(--secondary-color);
+}

@@ -1,0 +1,40 @@
+/** Viewport md **/
+@media screen and (max-width: 991.98px) {
+    .nav {
+        display: none;
+    }
+
+    .drawer-wrapper {
+        display: block;
+    }
+
+    .main-container {
+        margin-top: 60px;
+    }
+
+    .main {
+        margin-top: 50px;
+    }
+
+    .sidebar {
+        gap: 40px;
+    }
+
+    .filter {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .filter-select {
+        width: 100%;
+    }
+
+    .footer {
+        height: auto;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+}

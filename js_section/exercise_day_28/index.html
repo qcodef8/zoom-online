@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Zoom Online Day 28</title>
+
+        <!-- ? Preconnect -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+        <!-- ? Material Icons -->
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+        <!-- ? Styles CSS -->
+        <link rel="stylesheet" href="./assets/css/styles.css" />
+    </head>
+    <body>
+        <div class="player">
+            <div class="cover"></div>
+            <nav>
+                <div class="left">
+                    <i class="material-symbols-outlined">menu</i>
+                    <h6>Playlist</h6>
+                </div>
+                <div class="right">
+                    <i class="material-symbols-outlined search">search</i>
+                    <i class="material-symbols-outlined">queue_music</i>
+                </div>
+            </nav>
+            <div class="player-ui">
+                <div class="title">
+                    <h3>Hello</h3>
+                </div>
+                <div class="small">
+                    <i class="material-symbols-outlined">replay</i>
+                    <p>Adele</p>
+                    <i class="material-symbols-outlined">shuffle</i>
+                </div>
+                <div class="progress">
+                    <div class="played">
+                        <div class="circle"></div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <i class="material-symbols-outlined">skip_previous</i>
+                    <i class="material-symbols-outlined">play_arrow</i>
+                    <i class="material-symbols-outlined">skip_next</i>
+                </div>
+            </div>
+            <div class="music"></div>
+        </div>
+
+        <audio id="audio" controls hidden></audio>
+
+        <script src="./js/main.js"></script>
+        <script>
+            MusicPlayer.init();
+        </script>
+    </body>
+</html>
